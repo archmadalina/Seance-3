@@ -1,0 +1,86 @@
+---
+title: "R Notebook"
+output:
+  
+  word_document: default
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+## EXERCICE 7.84
+
+On a $n=10$ er $p=0.3$
+a. Calculer $\Pr(X=3)$.
+
+```{r}
+round(dbinom(3,10,.3),4)
+```
+```{r}
+round(dbinom(5,10,.3),4)
+```
+On a $n=10$ er $p=0.3$
+a. Calculer $\Pr(X=8)$.
+
+```{r}
+round(dbinom(8,10,.3),4)
+```
+## Obtenir les 3 resultats d'un coup.
+
+```{r}
+round(dbinom(c(3,5,8),10,.3),4)
+```
+## Executer le Chunk en Ligne de maniere trasparente
+
+a.Calculer $\Pr(X=3)$.On trouve $Pr(X=3) pour corriger !!!
+
+## EXERCICE 7.92
+
+```{r}
+dbinom(1,4,1/4)
+dbinom(2,8,1/4)
+dbinom(3,12,1/4)
+choose(4,2)
+choose(12,3)
+
+```
+Taper un code en ligne. Un exemple simple.
+`r 300*724`
+
+## EXERCICE 7.101
+Je veux calculer $\Pr(x\geq 5 )$. 
+On rapplel que $\Pr(x\geq 5 )= 1- \Pr(x\geq 5 )$. 
+
+```{r}
+round(sum(dbinom(5:10,10,244/495)),4)
+      
+round(1-pbinom(4,10,244/495),4)
+
+pbinom(4,10,244/495,lower.tail = FALSE)
+
+100*244/495
+```
+$E(X)=100\times \frac{244}{495}=$
+`r round(100*244/495,0)`
+Il gagne environ en moyenne `r round(100*244/495,0)`
+
+## EXERCICE 7.138
+Soit $X$ le nombre de faux-positifs pour 10 ans de n=mamaographie. On a $X$ suit une Loi $B(10,p)$, ou p est inconnu.
+On sait que $\Pr(X\geq 1)= 0.6. On doit trouver $p$
+$$
+p=1-1/(0.60-1)^10
+$$
+1-(1-p)^(10)=0.6
+$$
+Cela revient a resoudre:
+$$
+(1-p)^(10)=0.4
+
+```{r}
+1-0.4^(1/10)
+```
+Chaque annne la proba que le femme qui passe une mamographie obtienne une faux positif s'eleve a 8.75%.
+
+```{r}
+pbinom(0,10,0.08755646,lower.tail = FALSE)
+```
+
